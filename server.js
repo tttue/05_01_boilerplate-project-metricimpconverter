@@ -2,6 +2,7 @@
 /*
 	npm link express
 	npm link body-parser
+	npm link cors
 	npm link mocha
 	npm link chai
 	npm link chai-http
