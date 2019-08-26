@@ -18,7 +18,7 @@ const cors = require('cors');
 const helmet = require('helmet');
 const path = require('path');
 const dotenv = require('dotenv');
-dotenv.config({ path: path.resolve(process.cwd(), 'process.env') });
+dotenv.config({ path: path.resolve(process.cwd(), 'environment.txt') });
 
 var apiRoutes = require('./routes/api.js');
 var fccTestingRoutes = require('./routes/fcctesting.js');
