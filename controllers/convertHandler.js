@@ -7,7 +7,6 @@
 */
 
 function ConvertHandler() {
-	this.units = ["gal", "l", "lbs", "kg", "mi", "km"];
 	this.convertUnitDef = {
 		"gal": "l",
 		"l": "gal",
@@ -31,8 +30,8 @@ function ConvertHandler() {
 		var inputN = /^(\d+(\.\d+)?(\/\d+(\.\d+)?)?)?$/g;
 		var inputU = /(l|gal|kg|lbs|mi|km|L|GAL|KG|LBS|MI|KM)$/g;
 		var tmpUnit = input.match(/[a-z]+/ig)[0];
-		if (tmpUnit && inputU.test(tmpUnit) && this.units.includes(tmpUnit.toLowerCase())) {
-			unit = tmpUnit.toLowerCase();
+		if (tmpUnit && inputU.test(tmpUnit)) {
+			unit = tmpUnit;
 		}
 		var tmpNum = tmpUnit ? input.slice(0, input.indexOf(tmpUnit)) : input;
 		if (!tmpNum) {
@@ -68,11 +67,11 @@ function ConvertHandler() {
 	};
 
 	this.getReturnUnit = function (initUnit) {
-		return this.convertUnitDef[initUnit];
+		return this.convertUnitDef[initUnit.toLowerCase()];
 	};
 
 	this.spellOutUnit = function (unit) {
-		return this.unitSpellOut[unit];
+		return this.unitSpellOut[unit.toLowerCase()];
 	};
 
 	this.convert = function (initNum, initUnit) {
@@ -87,7 +86,7 @@ function ConvertHandler() {
 			"mi": 1.60934,
 			"km": 1 / 1.60934
 		}
-		return Math.round(initNum * unitConvertRate[initUnit] * 10000) / 10000;
+		return Math.round(initNum * unitConvertRate[initUnit.toLowerCase()] * 10000) / 10000;
 	};
 
 	this.getString = function (initNum, initUnit, returnNum, returnUnit) {
