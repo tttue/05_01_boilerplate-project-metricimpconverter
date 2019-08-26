@@ -28,9 +28,9 @@ function ConvertHandler() {
 		var num = undefined;
 		var unit = undefined;
 		var inputN = /^(\d+(\.\d+)?(\/\d+(\.\d+)?)?)?$/g;
-		var inputU = /(l|gal|kg|lbs|mi|km|L|GAL|KG|LBS|MI|KM)$/g;
+		var inputU = ["l","mi","gal","lbs","kg","km"];
 		var tmpUnit = input.match(/[a-z]+/ig)[0];
-		if (tmpUnit && inputU.test(tmpUnit)) {
+		if (tmpUnit && inputU.includes(tmpUnit.toLowerCase())) {
 			unit = tmpUnit;
 		}
 		var tmpNum = tmpUnit ? input.slice(0, input.indexOf(tmpUnit)) : input;
